@@ -310,7 +310,7 @@ func getImageID(file *os.File, dockerURL *common.ParsedDockerURL, name string, d
 			if err := json.Unmarshal(refb, &ref); err != nil {
 				return fmt.Errorf("error unmarshaling ref descriptor for tag %s", tag)
 			}
-			imageID, ancestry, err = getDataFromManifest(file, ref.Digest)
+			imageID, ancestry, err = getDataFromManifest(file, ref.Digest.String())
 			if err != nil {
 				return err
 			}
